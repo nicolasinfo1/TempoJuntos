@@ -1,178 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Eu & Você ❤️</title>
-
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eu & Você ❤️</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
 
-<!-- TELA INICIAL -->
-<div class="intro-screen" id="introScreen">
+  <div class="intro-screen" id="introScreen">
+    <div class="intro-card">
+      <div class="intro-flower">🌷</div>
+      <h1>Para você ❤️</h1>
+      <p>
+        Fiz esse cantinho com carinho<br>
+        para mostrar o nosso tempo juntos
+      </p>
+      <button id="startBtn" class="start-btn">Clique para começar</button>
+    </div>
+  </div>
+
+  <audio id="musica" loop preload="auto">
+    <source src="audio/musica.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <main class="wrap hidden" id="mainContent">
+    <header class="top">
+      <div>
+        <h1>Eu & Você <span class="heart">❤️</span></h1>
+        <p class="subtitle">Nosso tempo juntos, em tempo real.</p>
+      </div>
+      <div class="since" id="sinceText"></div>
+    </header>
+
+    <section class="card">
+      <p class="small">Estamos juntos há:</p>
+
+      <div class="timer" aria-live="polite">
+        <div class="pill">
+          <div class="num" id="years">0</div>
+          <div class="lbl">anos</div>
+        </div>
+
+        <div class="pill">
+          <div class="num" id="days">0</div>
+          <div class="lbl">dias</div>
+        </div>
+
+        <div class="pill">
+          <div class="num" id="hours">00</div>
+          <div class="lbl">horas</div>
+        </div>
+
+        <div class="pill">
+          <div class="num" id="minutes">00</div>
+          <div class="lbl">minutos</div>
+        </div>
+
+        <div class="pill">
+          <div class="num" id="seconds">00</div>
+          <div class="lbl">segundos</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="copyBtn">Copiar nosso tempo</button>
+        <button class="secondary" id="msgBtn">Mensagem pronta</button>
+      </div>
+
+      <div id="toast"></div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Nossa história (bem resumida)</h2>
+        <p>
+          A gente começou como conversa, virou rotina e virou casa.
+          De um “oi” simples para um “quer ser meu amigo?” que mudou tudo.
+        </p>
+        <p>
+          Hoje eu continuo te escolhendo nos detalhes: no cuidado, no apoio,
+          no jeito que você deixa tudo mais leve.
+        </p>
+
+        <div class="chips">
+          <span class="chip">Primeiro encontro: Shopping Itaquera</span>
+          <span class="chip">Nossa música: It Will Rain</span>
+          <span class="chip">Nosso lugar: Cinema
+          </span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Pra você</h2>
+        <p>
+          Se eu pudesse te dar uma flor, eu te daria tempo.
+          E eu tô aqui: todo dia, do seu lado, construindo o nosso.
+        </p>
+
+        <div class="sign">
+          <span class="small">Assinado:</span>
+          <strong>Seu amor</strong>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      Feito com carinho ❤️
+    </footer>
+  </main>
 
-<div class="intro-card">
-
-<div class="intro-flower">🌷</div>
-
-<h1>Para você ❤️</h1>
-
-<p>
-Fiz esse cantinho com carinho<br>
-para mostrar o nosso tempo juntos
-</p>
-
-<button id="startBtn" class="start-btn">
-Clique para começar
-</button>
-
-</div>
-</div>
-
-
-<!-- MUSICA -->
-<audio id="musica" loop>
-
-<source src="audio/musica.mp3" type="audio/mpeg">
-
-</audio>
-
-
-<!-- SITE -->
-<main class="wrap hidden" id="mainContent">
-
-<header class="top">
-
-<div>
-<h1>Eu & Você ❤️</h1>
-<p class="subtitle">Nosso tempo juntos, em tempo real.</p>
-</div>
-
-<div class="since" id="sinceText"></div>
-
-</header>
-
-
-<section class="card">
-
-<p class="small">Estamos juntos há:</p>
-
-<div class="timer">
-
-<div class="pill">
-<div class="num" id="years">0</div>
-<div class="lbl">anos</div>
-</div>
-
-<div class="pill">
-<div class="num" id="days">0</div>
-<div class="lbl">dias</div>
-</div>
-
-<div class="pill">
-<div class="num" id="hours">00</div>
-<div class="lbl">horas</div>
-</div>
-
-<div class="pill">
-<div class="num" id="minutes">00</div>
-<div class="lbl">minutos</div>
-</div>
-
-<div class="pill">
-<div class="num" id="seconds">00</div>
-<div class="lbl">segundos</div>
-</div>
-
-</div>
-
-
-<div class="actions">
-
-<button id="copyBtn">
-Copiar nosso tempo
-</button>
-
-<button class="secondary" id="msgBtn">
-Mensagem pronta
-</button>
-
-</div>
-
-<div id="toast"></div>
-
-</section>
-
-
-<section class="grid">
-
-<article class="card">
-
-<h2>Nossa história (bem resumida)</h2>
-
-<p>
-A gente começou como conversa, virou rotina e virou casa.
-De um “oi” simples para um “fica” que mudou tudo.
-</p>
-
-<p>
-Hoje eu continuo te escolhendo nos detalhes:
-no cuidado, no apoio, no jeito que você deixa tudo mais leve.
-</p>
-
-<div class="chips">
-
-<span class="chip">Primeiro encontro: (coloque aqui)</span>
-
-<span class="chip">Nossa música: It Will Rain</span>
-
-<span class="chip">Nosso lugar: (coloque aqui)</span>
-
-</div>
-
-</article>
-
-
-<article class="card">
-
-<h2>Pra você</h2>
-
-<p>
-Se eu pudesse te dar uma flor,
-eu te daria tempo.
-
-E eu tô aqui: todo dia,
-do seu lado,
-construindo o nosso.
-</p>
-
-<div class="sign">
-
-<span class="small">Assinado:</span>
-
-<strong>Seu amor</strong>
-
-</div>
-
-</article>
-
-</section>
-
-
-<footer class="footer">
-
-Feito com carinho ❤️
-
-</footer>
-
-</main>
-
-
-<script src="js/script.js"></script>
-
+  <script src="js/script.js"></script>
 </body>
 </html>

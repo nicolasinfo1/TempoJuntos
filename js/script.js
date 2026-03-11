@@ -5,11 +5,14 @@ const pad = (n) => String(n).padStart(2, "0");
 
 function getBrasiliaTime() {
   const now = new Date();
-  return new Date(now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+  return new Date(
+    now.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" })
+  );
 }
 
 function addYearsSafe(date, years) {
   const d = new Date(date);
+
   const target = new Date(
     d.getFullYear() + years,
     d.getMonth(),
@@ -47,12 +50,14 @@ function toast(msg) {
   t.textContent = msg;
 
   setTimeout(() => {
-    if (t.textContent === msg) t.textContent = "";
+    if (t.textContent === msg) {
+      t.textContent = "";
+    }
   }, 2200);
 }
 
 function initAnimatedNum(numEl) {
-  if (numEl.dataset.animated === "1") return;
+  if (!numEl || numEl.dataset.animated === "1") return;
 
   const initial = numEl.textContent.trim();
   numEl.textContent = "";
@@ -131,6 +136,37 @@ function update() {
     }).format(startedAt);
 }
 
+["years", "days", "hours", "minutes", "seconds"].forEach((id) => {
+  initAnimatedNum(el(id));
+});
+
+update();
+setInterval(update, 1000);
+
+const startBtn = el("startBtn");
+const introScreen = el("introScreen");
+const mainContent = el("mainContent");
+const musica = el("musica");
+
+startBtn.addEventListener("click", async () => {
+  let tocou = false;
+
+  try {
+    await musica.play();
+    tocou = true;
+  } catch (error) {
+    console.error("Erro ao tocar música:", error);
+  }
+
+  introScreen.classList.add("hide");
+  mainContent.classList.remove("hidden");
+  mainContent.classList.add("show");
+
+  if (!tocou) {
+    toast("O site abriu, mas a música não carregou.");
+  }
+});
+
 el("copyBtn").addEventListener("click", async () => {
   const years = el("years").dataset.value ?? el("years").textContent;
   const days = el("days").dataset.value ?? el("days").textContent;
@@ -152,28 +188,4 @@ el("copyBtn").addEventListener("click", async () => {
 el("msgBtn").addEventListener("click", () => {
   const years = el("years").dataset.value ?? el("years").textContent;
   alert(`Amor, eu fiz esse site pra você. Estamos juntos há ${years} anos ❤️`);
-});
-
-["years", "days", "hours", "minutes", "seconds"].forEach((id) => {
-  initAnimatedNum(el(id));
-});
-
-update();
-setInterval(update, 1000);
-
-const startBtn = el("startBtn");
-const introScreen = el("introScreen");
-const mainContent = el("mainContent");
-const musica = el("musica");
-
-startBtn.addEventListener("click", async () => {
-  try {
-    await musica.play();
-  } catch (error) {
-    console.log("O navegador bloqueou a reprodução:", error);
-  }
-
-  introScreen.classList.add("hide");
-  mainContent.classList.remove("hidden");
-  mainContent.classList.add("show");
 });
